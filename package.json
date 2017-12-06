@@ -1,0 +1,31 @@
+{
+  "name": "gameboy-rom-editor-env",
+  "version": "0.0.1",
+  "description": "A set of tools which augment GBK to make your Gameboy Color Development workflow more streamline and modern.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rob2d/gameboy-rom-editor-env.git"
+  },
+  "keywords": [
+    "GameboyColor",
+    "ROMs",
+    "Editing",
+    "Emulation",
+    "Gameboy",
+    "Retro",
+    "Oldskool"
+  ],
+  "author": "Robert Concepcion III",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rob2d/gameboy-rom-editor-env/issues"
+  },
+  "homepage": "https://github.com/rob2d/gameboy-rom-editor-env#readme",
+  "dependencies": {
+    "yargs": "^10.0.3"
+  }
+}

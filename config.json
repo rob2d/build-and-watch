@@ -1,0 +1,7 @@
+{
+    "emuPath":"C:\\VBA\\VisualBoyAdvance.exe",
+    "openEmuOnChange":true,
+    "watchFolder":"C:\\gbdk\\examples\\gb\\dscan\\",
+    "inputSourceFile":"dscan.c",
+    "outputFileName":"newgbaz.gb"
+}
