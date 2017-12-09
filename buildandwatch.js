@@ -10,7 +10,7 @@ const spawn = require('child_process').spawn;
 // were spawned (fs.watch is unstable
 // and we do not want to launch many
 // emulators simultaneously for batch
-// changes)
+// changes) [TODO]
 //let lastSpawnedProcessAt = new Date();
 
 /**
@@ -38,6 +38,7 @@ function closeAllEmuInstances () {
 // and if change detected for .c/.h,
 // spawn and manage required processes as needed
 
+console.log(`\nwatching for *.c|h file changes at: ${config.watchFolder}`);
 fs.watch(config.watchFolder, (action, filename)=> {
     if(filename.match(/.[ch]$/)) {
         console.log(`c or h file was updated:  ${filename} (${action})`);  
