@@ -17,8 +17,7 @@ npm install
 
 ## Build & Watch ##
 
-Build & Watch is a tool which watches a folder for changes to .c or .h files,
-builds your Gameboy ROM `.gb` file, and then conveniently launches an emulator of your choice with the updated ROM while closing older instances.
+Build & Watch is a Gameboy ROM development workflow tool which watches a folder for changes to .c or .h files, builds your Gameboy ROM `.gb` file, and then conveniently launches an emulator of your choice with the updated ROM while closing older instances.
 
 ### Usage ###
 
