@@ -15,7 +15,7 @@ Once you have these requirements, be sure to:
 
 ## Build & Watch <buildandwatch.js> ##
 
-Build and watch is a tool which watches a folder for changes to .c or .h files,
+Build & Watch is a tool which watches a folder for changes to .c or .h files,
 builds your Gameboy ROM `.gb` file, and then conveniently launches an emulator of your choice with the updated ROM while closing older instances.
 
 ### Usage ###
@@ -26,7 +26,7 @@ Be sure to configure the relevant parameters in `config.json`, go to your cloned
 node buildandwatch
 ```
 
-## 0bto0x <0bto0x.js> ##
+## 0bto0x ##
 
 0bto0x is a simple script which converts text within a file that contains `0b{binaryValue}` to `0x{hexValue}`. This is to make it easier to edit sprites or background tiles manually with the C formatted hex values needed by GBDK as necessary.
 
