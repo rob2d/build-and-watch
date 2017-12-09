@@ -18,7 +18,7 @@ Once you have these requirements, be sure to:
 Build and watch is a tool which watches a folder for changes to .c or .h files,
 builds your Gameboy ROM `.gb` file, and then conveniently launches an emulator of your choice with the updated ROM while closing older instances.
 
-### Using Build & Watch ###
+### Usage ###
 
 Be sure to configure the relevant parameters in `config.json`, go to your cloned repo directory, and then simply run:
 
