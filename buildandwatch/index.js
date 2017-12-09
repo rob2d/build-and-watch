@@ -9,12 +9,10 @@ const spawn = require('child_process').spawn;
 const inputPath = path.resolve(config.watchFolder, config.inputSourceFile);
 const outputPath = path.resolve(__dirname, './../', config.outputFileName);
 
-// keeps track of when the last processes
-// were spawned (fs.watch is unstable
-// and we do not want to launch many
-// emulators simultaneously for batch
-// changes) [TODO]
-//let lastSpawnedProcessAt = new Date();
+const registerFileChange = require('./registerFileChange');
+const buildROM = require('./buildROM');;
+
+
 
 /**
  *  stack of emulator exe's which have
@@ -37,48 +35,6 @@ function closeLaunchedEmuInstances () {
     }
 }
 
-function buildROM () {
-    return new Promise((resolve,reject)=> {
-
-        // check for and remove existing target ROM file 
-        // if needed before executing commands
-
-        if(fs.existsSync(outputPath)) {
-            
-            console.log('removing existing ROM at ' + outputPath);        
-            fs.unlinkSync(outputPath);
-        }
-        
-        console.log('building ROM at ' + outputPath);
-        
-
-        //run the gbdk build process
-
-        const lccProcess = spawn(`lcc` , [`${inputPath}`, `-o`, `${outputPath}`]);
-        
-        lccProcess.stdout.on('data', function (data) {    // register one or more handlers
-            console.log('lcc output: ' + data);
-        });   
-        
-        lccProcess.stderr.on('error', function (data) {
-            console.log('lcc error: ' + data);
-        });
-
-        // on exit, resolve or reject based on 
-        // error status code
-        
-        lccProcess.on('exit', function (code) {
-            if(code != 0) {
-                console.log('lcc process exited with code ' + code);            
-                reject('lcc process failed with code ' + code);    
-            } else {
-                resolve();
-            }
-        });   
-
-    });
-}
-
 function launchEmu() {
     return new Promise((resolve, reject)=> {
         closeLaunchedEmuInstances();
@@ -96,9 +52,14 @@ function launchEmu() {
     });
 }
 
+// build and launch ROM on start
+// according to configuration settings
+
 if(config.buildOnStart) {
-    buildROM().then(config.openEmuOnStart ? launchEmu : null);
-} else if(config.openEmuOnStart) {
+    buildROM({ inputPath, outputPath })
+        .then(config.openEmuOnStart ? launchEmu : null );
+
+    } else if(config.openEmuOnStart) {
     openEmuOnStart();
 }
 
@@ -109,8 +70,12 @@ if(config.buildOnStart) {
 console.log(`\nwatching for *.c|h file changes at: ${config.watchFolder}`);
 fs.watch(config.watchFolder, (action, filename)=> {
     if(filename.match(/.[ch]$/)) {
-        console.log(`c or h file was updated:  ${filename} (${action})`);  
+        const isValidChange = registerFileChange({ filename });
 
-        buildROM({ outputPath }).then(config.openEmuOnChange ? launchEmu : null);
+        if(isValidChange) {
+            console.log(`c or h file was updated:  ${filename} (${action})`);  
+            buildROM({ inputPath, outputPath })
+                .then(config.openEmuOnChange ? launchEmu : null);
+        }
     }
 });

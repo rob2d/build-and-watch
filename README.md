@@ -13,7 +13,7 @@ Once you have these requirements, be sure to:
     npm install
 ```
 
-## Build & Watch <buildandwatch.js> ##
+## Build & Watch ##
 
 Build & Watch is a tool which watches a folder for changes to .c or .h files,
 builds your Gameboy ROM `.gb` file, and then conveniently launches an emulator of your choice with the updated ROM while closing older instances.
