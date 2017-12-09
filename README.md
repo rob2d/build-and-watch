@@ -10,7 +10,7 @@ Once you have these requirements, be sure to:
 1) configure your PATH variables to include the `/bin` folder of your GBDK.
 2) build NodeJS dependencies by going into your cloned repo's root folder and running:
 ```
-    npm install
+npm install
 ```
 
 ## Build & Watch ##
