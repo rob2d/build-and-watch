@@ -8,9 +8,8 @@ function buildROM ({ inputPath, outputPath }) {
         // if needed before executing commands
 
         if(fs.existsSync(outputPath)) {
-            
-            console.log('removing existing ROM at ' + outputPath);        
             fs.unlinkSync(outputPath);
+            console.log('removed existing ROM at ' + outputPath); 
         }
         
         console.log('building ROM at ' + outputPath);
@@ -18,13 +17,16 @@ function buildROM ({ inputPath, outputPath }) {
 
         //run the gbdk build process
 
-        const lccProcess = spawn(`lcc` , [`${inputPath}`, `-o`, `${outputPath}`]);
+        const lccProcess = spawn(`lcc` , 
+            [ inputPath,'-Wl-yp0x143=0x80', `-o`, outputPath]
+        );
         
-        lccProcess.stdout.on('data', function (data) {    // register one or more handlers
+        lccProcess.stdout.on('data', function (data) { 
             console.log('lcc output: ' + data);
         });   
         
-        lccProcess.stderr.on('error', function (data) {
+        
+        lccProcess.stderr.on('data', function (data) {
             console.log('lcc error: ' + data);
         });
 

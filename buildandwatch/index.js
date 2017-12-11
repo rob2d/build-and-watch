@@ -24,7 +24,8 @@ const launchEmuWParams = ()=> {
 
 if(config.buildOnStart) {
     buildROM({ inputPath, outputPath })
-        .then(config.openEmuOnStart ? launchEmuWParams : null );
+        .then(config.openEmuOnStart ? launchEmuWParams : null )
+        .catch(error => console.error(error) );
 
     } else if(config.openEmuOnStart) {
     openEmuOnStart();
@@ -36,13 +37,14 @@ if(config.buildOnStart) {
 
 console.log(`\nwatching for *.c|h file changes at: ${config.watchFolder}`);
 fs.watch(config.watchFolder, (action, filename)=> {
-    if(filename.match(/.[ch]$/)) {
+    if(filename.match(/\.[ch]$/)) {
         const isValidChange = registerFileChange({ filename });
 
         if(isValidChange) {
             console.log(`c or h file was updated:  ${filename} (${action})`);  
             buildROM({ inputPath, outputPath })
-                .then(config.openEmuOnChange ? launchEmuWParams : null);
+                .then(config.openEmuOnChange ? launchEmuWParams : null)
+                .catch( error => console.error(error) );
         }
     }
 });
