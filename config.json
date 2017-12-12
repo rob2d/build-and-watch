@@ -5,5 +5,7 @@
     "openEmuOnStart":true,
     "watchFolder":"C:\\projects\\gbc_fun\\",
     "inputSourceFile":"new.c",
-    "outputFileName":"new_gbgame.gbc"
+    "outputFileName":"new_gbgame.gbc",
+    "showOSErrorNotices":true,
+    "playErrorSound":true
 }

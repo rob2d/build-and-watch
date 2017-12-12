@@ -1,15 +1,31 @@
 const fs = require('fs');
 const path = require('path');
 const args = require('yargs').argv;
+const notifier = require('node-notifier');
 
+const BuildModes = require ('./constants/BuildModes');
 const registerFileChange = require('./registerFileChange');
 const buildROM = require('./buildROM');
 const { launchEmu } = require ('./emuManagement');
-
 const config = require('./../config.json');
 
 const inputPath = path.resolve(config.watchFolder, config.inputSourceFile);
 const outputPath = path.resolve(__dirname, './../', config.outputFileName);
+
+// by default, build ROMs designed to take advantage of GBC
+const buildMode = (typeof config.buildForGBC != 'undefined' && !config.buildForGBC) ?
+                    BuildModes.GB : BuildModes.GBC;
+
+const handleError = (error) => {
+    if(config.showOSErrorNotices) {
+        notifier.notify({
+            title   : 'Error occured',
+            message : error,
+            sound   : config.playErrorSound
+        })
+    }
+    console.error(error);
+};
 
 // launch emu with necessary params
 const launchEmuWParams = ()=> {
@@ -22,10 +38,12 @@ const launchEmuWParams = ()=> {
 // build and launch ROM on start
 // according to configuration settings
 
+const buildParams = { inputPath, outputPath, buildMode };
+
 if(config.buildOnStart) {
-    buildROM({ inputPath, outputPath })
+    buildROM(buildParams)
         .then(config.openEmuOnStart ? launchEmuWParams : null )
-        .catch(error => console.error(error) );
+        .catch(handleError);
 
     } else if(config.openEmuOnStart) {
     openEmuOnStart();
@@ -42,9 +60,9 @@ fs.watch(config.watchFolder, (action, filename)=> {
 
         if(isValidChange) {
             console.log(`c or h file was updated:  ${filename} (${action})`);  
-            buildROM({ inputPath, outputPath })
+            buildROM(buildParams)
                 .then(config.openEmuOnChange ? launchEmuWParams : null)
-                .catch( error => console.error(error) );
+                .catch(handleError);
         }
     }
 });

@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/rob2d/gameboy-rom-editor-env#readme",
   "dependencies": {
+    "node-notifier": "^5.1.2",
     "yargs": "^10.0.3"
   }
 }
