@@ -31,9 +31,18 @@ function buildROM ({ inputPath, outputPath, buildMode }) {
         
         
         lccProcess.stderr.on('data', function (data) {
+            data = data + ''; // give data the string prototype
             const error = 'lcc error: ' + data;
-            hasThrownError = true;
-            reject(error);
+
+            // do not reject if it is simply a warning
+            // but be sure to print out the output
+            if(!data.match(/warning \*\*\*/i)) {
+                hasThrownError = true;
+                reject(error);
+            } else {
+                console.log(error);
+                resolve(data);
+            }
         });
 
         // on exit, resolve or reject based on 
