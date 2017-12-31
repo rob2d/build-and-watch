@@ -8,9 +8,11 @@ const registerFileChange = require('./registerFileChange');
 const buildROM = require('./buildROM');
 const { launchEmu } = require ('./emuManagement');
 const config = require('./../config.json');
+const { watchFolder, inputSourceFile } = config;
 
-const inputPath = path.resolve(config.watchFolder, config.inputSourceFile);
-const outputPath = path.resolve(__dirname, './../', config.outputFileName);
+const sourceFilePath = path.resolve(watchFolder, inputSourceFile);
+const tmpBuildDir = path.resolve(__dirname, './_tmp');
+const outputFilePath = path.resolve(__dirname, './../', config.outputFileName);
 
 // by default, build ROMs designed to take advantage of GBC
 const buildMode = (typeof config.buildForGBC != 'undefined' && !config.buildForGBC) ?
@@ -24,13 +26,13 @@ const handleError = (error) => {
             sound   : config.playErrorSound
         })
     }
-    console.error(error);
+    console.log(error);
 };
 
 // launch emu with necessary params
 const launchEmuWParams = ()=> {
     return launchEmu({ 
-        romPath : outputPath, 
+        romPath : outputFilePath, 
         emuPath : config.emuPath 
     });
 };
@@ -38,12 +40,19 @@ const launchEmuWParams = ()=> {
 // build and launch ROM on start
 // according to configuration settings
 
-const buildParams = { inputPath, outputPath, buildMode };
+const buildParams = { 
+    sourceFilePath, 
+    inputSourceFile, 
+    tmpBuildDir, 
+    watchFolder, 
+    outputFilePath, 
+    buildMode 
+};
 
 if(config.buildOnStart) {
     buildROM(buildParams)
         .then(config.openEmuOnStart ? launchEmuWParams : null )
-        .catch(handleError);
+        .catch((handleError));
 
     } else if(config.openEmuOnStart) {
     openEmuOnStart();

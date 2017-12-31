@@ -1,11 +1,13 @@
 {
+    "gbdkPath": "C:\\gbdk",
     "emuPath":"C:\\VBA\\VisualBoyAdvance.exe",
     "openEmuOnChange":true,
     "buildOnStart":true,
     "openEmuOnStart":true,
-    "watchFolder":"C:\\projects\\gbc_fun\\",
-    "inputSourceFile":"new.c",
-    "outputFileName":"new_gbgame.gbc",
-    "showOSErrorNotices":true,
-    "playErrorSound":true
+    "watchFolder":"C:\\projects\\sonic8bit\\src",
+    "inputSourceFile":"sonic8bit.c",
+    "outputFileName":"C:\\projects\\sonic8bit\\dist\\sonic8bit.gbc",
+    "showOSErrorNotices":false,
+    "playErrorSound":true,
+    "buildForGBC":true
 }

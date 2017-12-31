@@ -34,6 +34,9 @@ function launchEmu({ emuPath, romPath }) {
         emuProcess.on('exit', function(code) {
             if(code != 0 && code != 1) {
                     console.log('emu process exited with code ' + code);
+                    reject('emu process exited with code ' + code)
+            } else {
+                resolve();
             }
         });
     });
