@@ -44,19 +44,27 @@ function buildROM ({
         // edit all #include "xxx" to #include 
         // "OSfilePath/xxx" automatically
         // for any c/h file
-        const expandIncludes = (fileContent)=> {
+        const expandIncludes = ({ fileContent, filePathDir })=> {
             return fileContent.replace(/(#include ")(.+\.[c|h])(")/g, (match, include, file, close)=> {
-                return `${include}${path.resolve(tmpBuildDir, file)}${close}`;
+                return `${include}${path.resolve(filePathDir, file)}${close}`;
             });
         };
 
         files.forEach( f => {
             const fileType = f.substr(f.lastIndexOf('.')+1);
             if(fileType == 'c' || fileType == 'h') {
-                const filePath = path.resolve(f);
+                const filePath = path.resolve(tmpBuildDir, f);
+
+                // grab last index of relative file path
+                let indexOfFolderChar =f.lastIndexOf('\\');
+                if(indexOfFolderChar == -1) {
+                    indexOfFolderChar = f.lastIndexOf('/');
+                }
+                
+                const filePathDir = (indexOfFolderChar != -1) ? f.substr(0, indexOfFolderChar):'';
                 const fileContent = fs.readFileSync(filePath, 'utf-8');
                 
-                fs.writeFileSync(filePath, expandIncludes(fileContent), 'utf-8');
+                fs.writeFileSync(filePath, expandIncludes({ fileContent, filePathDir }), 'utf-8');
             }
         });
 
