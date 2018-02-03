@@ -60,7 +60,7 @@ function buildROM ({
                 if(indexOfFolderChar == -1) {
                     indexOfFolderChar = f.lastIndexOf('/');
                 }
-                
+
                 const filePathDir = (indexOfFolderChar != -1) ? f.substr(0, indexOfFolderChar):'';
                 const fileContent = fs.readFileSync(filePath, 'utf-8');
                 
@@ -91,8 +91,7 @@ function spawnLccProcess ({ inputSourceFile, tmpBuildDir, outputFilePath, buildM
             lccProcess.stdout.on('data', function (data) { 
                 console.log('lcc output: ' + data);
             });   
-            
-            
+                        
             lccProcess.stderr.on('data', function (data) {
                 data = data + ''; // give data the string prototype
                 const error = 'lcc error: ' + data;

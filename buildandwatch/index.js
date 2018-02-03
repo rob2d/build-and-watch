@@ -65,13 +65,15 @@ if(config.buildOnStart) {
 console.log(`\nwatching for *.c|h file changes at: ${config.watchFolder}`);
 fs.watch(config.watchFolder, (action, filename)=> {
     if(filename.match(/\.[ch]$/)) {
-        const isValidChange = registerFileChange({ filename });
+        
+        registerFileChange({ filename })
+            .then((isValidChange => {
+                if(!isValidChange) { return }
 
-        if(isValidChange) {
-            console.log(`c or h file was updated:  ${filename} (${action})`);  
-            buildROM(buildParams)
-                .then(config.openEmuOnChange ? launchEmuWParams : null)
-                .catch(handleError);
-        }
+                console.log(`c or h file was updated:  ${filename} (${action})`);  
+                buildROM(buildParams)
+                    .then(config.openEmuOnChange ? launchEmuWParams : null)
+                    .catch(handleError);
+            }));
     }
 });
