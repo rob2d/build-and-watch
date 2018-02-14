@@ -1,0 +1,397 @@
+AREA .  .ABS.
+	RADIX HEX
+	BASE 0000
+	SIZE 0000
+	ATTRIB ABS OVR
+	GLOBALS
+		l__HEAP	0000
+		l__BSEG	0000
+		l_.  .ABS.	0000
+		l__GSFINAL	0000
+		l__ISEG	0000
+		s_.  .ABS.	0000
+		l__CODE_1	0000
+		s__HEADER	0000
+		l__XSEG	0000
+		.init	0000
+		l__OVERLAY	0000
+		l__LIT	0000
+		l__GSINITTAIL	0001
+		l__BSS	005E
+		l__CODE	0150
+		l__HOME	01AC
+		l__HEADER	01E1
+		s__CODE	0200
+		s__HOME	0350
+		l__BASE	036B
+		s__BASE	04FC
+		s__LIT	0867
+		s__GSINIT	0867
+		l__DATA	1182
+		l__CODE_2	174E
+		s__CODE_1	4000
+		s__CODE_2	4000
+		l__GSINIT	67E4
+		s__GSINITTAIL	704B
+		s__GSFINAL	704C
+		.OAM	C000
+		s__DATA	C0A0
+		s__BSS	D222
+		s__HEAP	D280
+		s__BSEG	D280
+		s__ISEG	D280
+		s__XSEG	D280
+		s__OVERLAY	D280
+		.STACK	E000
+		.refresh_OAM	FF80
+AREA _CODE
+	RADIX HEX
+	BASE 0200
+	SIZE 0150
+	ATTRIB REL CON
+	GLOBALS
+		_Init_loadPalettesAndTiles	0200
+		_main	0251
+		_rand	026A
+		_randw	026A
+		_set_bkg_palette_entry	0295
+		_set_sprite_palette_entry	02BD
+		_cpu_slow	02E5
+		_cpu_fast	0300
+		_cgb_compatibility	0307
+AREA _HEADER
+	RADIX HEX
+	BASE 0000
+	SIZE 01E1
+	ATTRIB ABS OVR
+	GLOBALS
+		_exit	01D2
+AREA _HOME
+	RADIX HEX
+	BASE 0350
+	SIZE 01AC
+	ATTRIB REL CON
+	GLOBALS
+		.set_mode	0350
+		.remove_VBL	0360
+		.remove_LCD	0366
+		.remove_TIM	036C
+		.remove_SIO	0372
+		.remove_JOY	0378
+		.add_VBL	037E
+		.add_LCD	0384
+		.add_TIM	038A
+		.add_SIO	0390
+		.add_JOY	0396
+		.remove_int	039C
+		.add_int	03BC
+		.wait_vbl_done	03D8
+		_wait_vbl_done	03D8
+		_display_off	03EF
+		.display_off	03EF
+		.serial_IO	0410
+		_mode	043F
+		_get_mode	0448
+		_enable_interrupts	044D
+		_disable_interrupts	044F
+		_reset	0451
+		.reset	0451
+		_set_interrupts	0457
+		_remove_VBL	0462
+		_remove_LCD	046D
+		_remove_TIM	0478
+		_remove_SIO	0483
+		_remove_JOY	048E
+		_add_VBL	0499
+		_add_LCD	04A4
+		_add_TIM	04AF
+		_add_SIO	04BA
+		_add_JOY	04C5
+		_clock	04D0
+		__printTStates	04D9
+		banked_call	04DA
+		banked_ret	04F3
+AREA _BASE
+	RADIX HEX
+	BASE 04FC
+	SIZE 036B
+	ATTRIB REL CON
+	GLOBALS
+		.set_sprite_prop	04FC
+		_set_sprite_prop	0509
+		_scroll_bkg	0514
+		_initrand	052A
+		.initrand	052C
+		_set_bkg_palette	0535
+		_set_sprite_palette	0560
+		.mv_sprite	058B
+		_move_sprite	059A
+		__modslong	05A7
+		__divslong	05A7
+		__mulslong	05A7
+		__divschar	05A8
+		__modschar	05B4
+		__divsint	05BF
+		__modsint	05D0
+		__divuchar	05DF
+		__moduchar	05EB
+		__divuint	05F6
+		__moduint	0607
+		.mod8	0616
+		.div8	0616
+		.mod16	061E
+		.div16	061E
+		.modu8	0654
+		.divu8	0654
+		.modu16	0657
+		.divu16	0657
+		_set_win_data	0694
+		_set_bkg_data	0694
+		_set_sprite_data	06E1
+		__mulschar	0710
+		__muluchar	0710
+		__mulsint	071C
+		__muluint	071C
+		.mulu16	0730
+		.mul16	0730
+		.padup	0746
+		_waitpadup	0746
+		.jpad	0756
+		.wait_pad	0783
+		_joypad	078A
+		_waitpad	078F
+		.set_sprite_tile	0799
+		_set_sprite_tile	07A6
+		.get_sprite_prop	07B1
+		_get_sprite_prop	07BE
+		.copy_vram	07C7
+		_get_data	07D6
+		_set_data	07D6
+		_set_bkg_tiles	07E9
+		.set_xy_wtt	07FD
+		.set_xy_btt	080E
+		.set_xy_tt	081D
+		_set_tiles	084E
+AREA _LIT
+	RADIX HEX
+	BASE 0867
+	SIZE 0000
+	ATTRIB REL CON
+AREA _GSINIT
+	RADIX HEX
+	BASE 0867
+	SIZE 67E4
+	ATTRIB REL CON
+	GLOBALS
+		gsinit	0867
+AREA _GSINITTAIL
+	RADIX HEX
+	BASE 704B
+	SIZE 0001
+	ATTRIB REL CON
+AREA _GSFINAL
+	RADIX HEX
+	BASE 704C
+	SIZE 0000
+	ATTRIB REL CON
+AREA _DATA
+	RADIX HEX
+	BASE C0A0
+	SIZE 1182
+	ATTRIB REL CON
+	GLOBALS
+		_bg_tilesCGB	C0A0
+		_bg_tiles	C10A
+		_FelixCGB	C7AA
+		_Felix	C7B0
+		_building	C930
+		_building_attr	CD18
+		_i	D100
+		_rndNumber	D101
+		_temp	D102
+		_keysDown	D104
+		_keysState	D105
+		_keysUp	D106
+		_lastKeysState	D107
+		_changedKeys	D108
+		_Stage_number	D109
+		_Stage_transitionTimer	D10A
+		_Stage_windowStates	D10B
+		_Stage_windowColumnPositions	D11A
+		_Stage_windowRowPositions	D124
+		_Stage_windowTiles	D12A
+		_Stage_singleWindowTileIDs	D166
+		_Stage_doubleWindowTileIDs	D16A
+		_winX	D16E
+		_winY	D16F
+		_Brick_x	D170
+		_Brick_y	D178
+		_Felix_facing	D180
+		_Felix_lastFacing	D181
+		_Felix_x	D182
+		_Felix_y	D183
+		_Felix_jump	D184
+		_Felix_windowRow	D185
+		_Felix_windowCol	D186
+		_Felix_windowColumnPositions	D187
+		_Felix_windowRowPositions	D191
+		_Felix_moveTimer	D195
+		_Felix_fixingTimer	D196
+		_Felix_armOffset	D197
+		_Ralph_x	D198
+		_Ralph_y	D199
+		_Ralph_spots	D19A
+		_Ralph_ySpots	D19D
+		_Ralph_spot	D19F
+		_Ralph_mode	D1A0
+		_Ralph_animationTimer	D1A1
+		_bgTilePalettes_gameMode	D1A2
+		_sprPalettes_gameMode	D1E2
+AREA _BSS
+	RADIX HEX
+	BASE D222
+	SIZE 005E
+	ATTRIB REL CON
+	GLOBALS
+		__cpu	D222
+		.mode	D223
+		__io_out	D224
+		__io_in	D225
+		__io_status	D226
+		.vbl_done	D227
+		__current_bank	D228
+		_sys_time	D229
+		.sys_time	D229
+		.int_0x40	D22B
+		.int_0x48	D23B
+		.int_0x50	D24B
+		.int_0x58	D25B
+		.int_0x60	D26B
+		.randhi	D27B
+		.randlo	D27C
+AREA _HEAP
+	RADIX HEX
+	BASE D280
+	SIZE 0000
+	ATTRIB REL CON
+	GLOBALS
+		_malloc_heap_start	D280
+AREA _OVERLAY
+	RADIX HEX
+	BASE D280
+	SIZE 0000
+	ATTRIB REL CON
+AREA _ISEG
+	RADIX HEX
+	BASE D280
+	SIZE 0000
+	ATTRIB REL CON
+AREA _BSEG
+	RADIX HEX
+	BASE D280
+	SIZE 0000
+	ATTRIB REL CON
+AREA _XSEG
+	RADIX HEX
+	BASE D280
+	SIZE 0000
+	ATTRIB REL CON
+AREA _CODE_1
+	RADIX HEX
+	BASE 4000
+	SIZE 0000
+	ATTRIB REL CON
+AREA _CODE_2
+	RADIX HEX
+	BASE 4000
+	SIZE 174E
+	ATTRIB REL CON
+	GLOBALS
+		_Keys_update	4000
+		_Keys_keyDown	4032
+		_Keys_keyState	4046
+		_Keys_keyUp	405A
+		_Stage_setWindowTile	406E
+		_Stage_breakWindow	4304
+		_Stage_fixWindow	43F7
+		_Stage_breakRandomWindows	4474
+		_Stage_init	44B1
+		_Brick_spawnBrick	44BF
+		_Bricks_update	4512
+		_Felix_init	45C1
+		_Felix_setLegSprites	4606
+		_Felix_setFacing	467E
+		_Felix_moveHorizontal	481A
+		_Felix_moveVertical	48FA
+		_Felix_keys	494A
+		_Felix_moveToWindow	49CD
+		_Felix_fix	4AAB
+		_Felix_updateSprites	4B6C
+		_Felix_update	4D39
+		_Ralph_pickNewSpot	4D60
+		_Ralph_startPounding	4E35
+		_Ralph_init	4EC2
+		_Ralph_walk	4EE7
+		_Ralph_pound	4F3F
+		_Ralph_updateSprites	4F51
+		_Ralph_update	532F
+		_Init_loadBuildingBG	5357
+		_Init_makeFelixSprites	53A5
+		_Init_makeRalphSprites	5476
+		_Init_makeBrickSprites	5595
+		_Init_makeSprites	5666
+		_Init_init	5670
+		_mainLoop	569C
+MODULES
+	FILE C:\gbdk\lib/small/asxxxx/gb/crt0.o
+		NAME Runtime
+	FILE C:\projects\gbc_fun\buildandwatch\_tmp\bank1.o
+		NAME lcc181200
+	FILE C:\projects\gbc_fun\buildandwatch\_tmp\bank2.o
+		NAME lcc180720
+	FILE C:\projects\gbc_fun\buildandwatch\_tmp\main.o
+		NAME lcc115440
+LIBRARIES
+	LIBRARY C:\gbdk\lib/small/asxxxx/gb/gb.lib
+		MODULE set_prop.o
+	LIBRARY C:\gbdk\lib/small/asxxxx/gb/gb.lib
+		MODULE scroll_b.o
+	LIBRARY C:\gbdk\lib/small/asxxxx/gb/gb.lib
+		MODULE rand.o
+	LIBRARY C:\gbdk\lib/small/asxxxx/gb/gb.lib
+		MODULE cgb.o
+	LIBRARY C:\gbdk\lib/small/asxxxx/gb/gb.lib
+		MODULE mv_spr.o
+	LIBRARY C:\gbdk\lib/small/asxxxx/gbz80/gbz80.lib
+		MODULE div.o
+	LIBRARY C:\gbdk\lib/small/asxxxx/gb/gb.lib
+		MODULE set_data.o
+	LIBRARY C:\gbdk\lib/small/asxxxx/gbz80/gbz80.lib
+		MODULE mul.o
+	LIBRARY C:\gbdk\lib/small/asxxxx/gb/gb.lib
+		MODULE pad.o
+	LIBRARY C:\gbdk\lib/small/asxxxx/gb/gb.lib
+		MODULE set_spr.o
+	LIBRARY C:\gbdk\lib/small/asxxxx/gb/gb.lib
+		MODULE get_prop.o
+	LIBRARY C:\gbdk\lib/small/asxxxx/gb/gb.lib
+		MODULE cpy_data.o
+	LIBRARY C:\gbdk\lib/small/asxxxx/gb/gb.lib
+		MODULE set_bk_t.o
+	LIBRARY C:\gbdk\lib/small/asxxxx/gb/gb.lib
+		MODULE set_xy_t.o
+USERBASEDEF
+	_CODE=0x0200
+	_DATA=0xC0A0
+	_CODE_1=0x4000
+	_CODE_2=0x4000
+	_CODE_3=0x4000
+	_DATA_0=0xA000
+	_DATA_1=0xA000
+	_DATA_2=0xA000
+	_DATA_3=0xA000
+USERGLOBALDEF
+	.OAM=0xC000
+	.STACK=0xE000
+	.refresh_OAM=0xFF80
+	.init=0x0000

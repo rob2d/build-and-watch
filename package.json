@@ -1,7 +1,7 @@
 {
-  "name": "gameboy-rom-editor-env",
+  "name": "build-and-watch",
   "version": "0.0.1",
-  "description": "A set of tools which augment GBK to make your Gameboy Color Development workflow more streamline and modern.",
+  "description": "A tool which augments GBK to streamline your Gameboy Color Development workflow and get actually things done",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -22,12 +22,13 @@
   "author": "Robert Concepcion III",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rob2d/gameboy-rom-editor-env/issues"
+    "url": "https://github.com/rob2d/game-and-watch/issues"
   },
-  "homepage": "https://github.com/rob2d/gameboy-rom-editor-env#readme",
+  "homepage": "https://github.com/rob2d/game-and-watch#readme",
   "dependencies": {
     "copy-dir": "^0.3.0",
     "fs-extra": "^5.0.0",
+    "mkdirp": "^0.5.1",
     "node-notifier": "^5.1.2",
     "recursive-readdir-sync": "^1.0.6",
     "yargs": "^10.0.3"
