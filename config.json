@@ -5,13 +5,12 @@
     "buildOnStart":true,
     "openEmuOnStart":true,
     "watchFolder":"C:\\projects\\fix_it_felix",
-    "showOSErrorNotices":false,
-    "playErrorSound":true,
     "buildForGBC":true,
     "inputSourceFile":"main.c",
     "outputFileName":"C:\\projects\\fix_it_felix\\dist\\main.gb",
-    "banks": [
+    "banks  ": [
         "tiles.c",
-        "game.c"
+        "game.c",
+        "titlescreen.c"
     ]
 }

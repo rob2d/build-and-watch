@@ -1,6 +1,6 @@
 # Build & Watch #
 
-Build & Watch is a Gameboy ROM development workflow tool which watches a folder for changes to .c or .h files, builds your Gameboy ROM `.gb` file, and then conveniently launches an emulator of your choice with the updated ROM while closing older instances.
+Build & Watch is a Gameboy ROM development workflow tool which watches a folder for changes to .c or .h files, builds your Gameboy ROM `.gb` file using GBDK, and then conveniently launches an emulator of your choice with the updated ROM while closing older instances each time you make an edit.
 
 ## Getting Started ##
 
@@ -12,32 +12,18 @@ These tools are created with NodeJS. To begin usage, make sure you have installe
 
 Once you have these requirements, be sure to:
 1) configure your PATH variables to include the `/bin` folder of your GBDK.
-2) build NodeJS dependencies by going into your cloned repo's root folder and running:
+2) Open your terminal
+3) Go to the directory where you intend to build your source code to a ROM and type
 ```
-npm install
+npm install -g buildandwatch
 ```
-
 
 ## Usage ##
 
 Be sure to configure the relevant parameters in `config.json`, go to your cloned repo directory, and then simply run:
 
 ```
-node buildandwatch
-```
-
-## Other Tools Included ##
-
-### 0bto0x ###
-
-0bto0x is a simple script which converts text within a file that contains `0b{binaryValue}` to `0x{hexValue}`. This is to make it easier to edit sprites or background tiles manually with the C formatted hex values needed by GBDK as necessary.
-
-#### Usage ####
-
-Go to the cloned repo root directory and simply run
-
-```
-node 0bto0x --input=yourfile.txt --output=outputfile.txt
+buildandwatch --config="myconfigfile.json"
 ```
 
 
