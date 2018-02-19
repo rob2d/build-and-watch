@@ -1,6 +1,6 @@
 {
   "name": "build-and-watch",
-  "version": "0.0.7",
+  "version": "0.0.15",
   "description": "A tool which augments GBK to streamline your Gameboy Color Development workflow so you can actually get things done",
   "main": "lib/index.js",
   "preferGlobal" : true,
@@ -36,6 +36,7 @@
     "mkdirp": "^0.5.1",
     "node-notifier": "^5.1.2",
     "recursive-readdir-sync": "^1.0.6",
-    "yargs": "^10.0.3"
+    "yargs": "^10.0.3",
+    "colors" : "^1.1.2"
   }
 }
