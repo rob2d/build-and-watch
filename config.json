@@ -4,10 +4,13 @@
     "openEmuOnChange":true,
     "buildOnStart":true,
     "openEmuOnStart":true,
-    "watchFolder":"C:\\projects\\sonic8bit\\src",
-    "inputSourceFile":"sonic8bit.c",
-    "outputFileName":"C:\\projects\\sonic8bit\\dist\\sonic8bit.gbc",
-    "showOSErrorNotices":false,
-    "playErrorSound":true,
-    "buildForGBC":true
+    "watchFolder":"C:\\projects\\fix_it_felix",
+    "buildForGBC":true,
+    "inputSourceFile":"main.c",
+    "outputFileName":"C:\\projects\\fix_it_felix\\dist\\main.gb",
+    "banks  ": [
+        "tiles.c",
+        "game.c",
+        "titlescreen.c"
+    ]
 }
