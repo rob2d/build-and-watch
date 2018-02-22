@@ -1,9 +1,9 @@
 {
   "name": "build-and-watch",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "A tool which augments GBK to streamline your Gameboy Color Development workflow so you can actually get things done",
   "main": "lib/index.js",
-  "preferGlobal" : true,
+  "preferGlobal": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -31,12 +31,13 @@
   },
   "homepage": "https://github.com/rob2d/game-and-watch#readme",
   "dependencies": {
+    "colors": "^1.1.2",
     "copy-dir": "^0.3.0",
     "fs-extra": "^5.0.0",
     "mkdirp": "^0.5.1",
     "node-notifier": "^5.1.2",
+    "promise-serial": "^0.1.5",
     "recursive-readdir-sync": "^1.0.6",
-    "yargs": "^10.0.3",
-    "colors" : "^1.1.2"
+    "yargs": "^10.0.3"
   }
 }
