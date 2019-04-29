@@ -1,7 +1,7 @@
 {
   "name": "build-and-watch",
-  "version": "0.0.16",
-  "description": "A tool which augments GBK to streamline your Gameboy Color Development workflow so you can actually get things done",
+  "version": "0.1.0",
+  "description": "tool to augments GBDK and streamline your Gameboy Color Development workflow so you can actually get things done",
   "main": "lib/index.js",
   "preferGlobal": true,
   "scripts": {
@@ -25,7 +25,7 @@
     "GBDK"
   ],
   "author": "Robert Concepcion III",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/rob2d/game-and-watch/issues"
   },

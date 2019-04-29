@@ -15,7 +15,7 @@ Once you have these requirements, be sure to:
 2) Open your terminal
 3) Go to the directory where you intend to build your source code to a ROM and type
 ```
-npm install -g buildandwatch
+npm install -g build-and-watch
 ```
 
 ## Usage ##
